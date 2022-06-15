@@ -8,9 +8,10 @@ import { ConfigModule } from '@nestjs/config';
 import { PostModule } from './post/post.module';
 import { PrismaModule } from './prisma/prisma.module';
 import * as Joi from '@hapi/joi';
+import { ProductModule } from './products/products.module';
 
 @Module({
-  imports: [AuthModule, UserModule, BookmarkModule,ConfigModule.forRoot({
+  imports: [AuthModule,ProductModule ,UserModule, BookmarkModule,ConfigModule.forRoot({
     validationSchema: Joi.object({
       POSTGRES_HOST: Joi.string().required(),
       POSTGRES_PORT: Joi.number().required(),
