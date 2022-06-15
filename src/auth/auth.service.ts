@@ -21,18 +21,15 @@ constructor(private prismaService : PrismaService){}
             if (!user)
                 throw new ForbiddenException('cridential are not exists');
 
-
-          
         //compare password
             const pwmacthes  = await argon.verify(
                 user.hash,
                 dto.password
             )
-        
         //if password  is not exist throw excetpion 
         if (!pwmacthes)
         throw new ForbiddenException('cridential are not exists');
-        // senf back the user 
+        // send back the user 
         return user;
        }
     async signup(dto : AuthDto){
@@ -45,7 +42,6 @@ constructor(private prismaService : PrismaService){}
                email : dto.email,
                hash,
             },
-
           });
           delete user.hash;
          //return  the saved user 
